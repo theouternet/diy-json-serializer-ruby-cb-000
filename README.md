@@ -257,7 +257,7 @@ $(function () {
     var id = $(this).data("id");
     $.getJSON("/posts/" + id + "/post_data", function(data) {
       // Replace text of body-id div
-      $("#body-" + id).html(data["description"]);
+      $("#body-" + id).text(data["description"]);
     });
   });
 });
@@ -309,6 +309,7 @@ $(function () {
       // re-set the id to current on the link
       $(".js-next").attr("data-id", data["id"]);
     });
+    return false;
   });
 });
 </script>
