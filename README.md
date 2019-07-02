@@ -99,7 +99,7 @@ serialize that data for consumption. Since so much data was being used
 in AJAX calls by the mid 2000s, it only made sense to start offering
 that data in the native language of the calling code.
 
-Beyond that, there's significant advantages to JSON. If we serialize
+Beyond that, there are significant advantages to JSON. If we serialize
 that same `Post` to JSON, it looks like this:
 
 ```javascript
@@ -124,8 +124,8 @@ likes.
 ![snap](https://media.giphy.com/media/10zi9Pi3iVtX7W/giphy.gif)
 
 The other great benefit of JSON is the structure. It's just a
-dictionary. A set of key-value pairs. And accessing the values of a
-dictionary is _super easy_ compared to traversing the nodes of a
+hash. A set of key-value pairs. And accessing the values of a
+hash is _super easy_ compared to traversing the nodes of a
 tag-based document. We do it all the time with Ruby hashes. Not only is
 it more efficient, but it's also a function that's native to the
 language, rather than needing to build or use a library for parsing XML.
@@ -264,7 +264,7 @@ $(function () {
 </script>
 ```
 
-As you can see, we can access the JSON just like any other dictionary, and get
+As you can see, we can access the JSON just like any other hash, and get
 the value for the `"description"` key. But first, we have to tell jQuery to
 expect to receive JSON data by calling `$.getJSON()` instead of `$.get()`.
 Otherwise, jQuery will treat `data` as a string, and `data["description"]` will
@@ -301,7 +301,7 @@ Okay, now let's add the JavaScript to handle this.
 <script type="text/javascript" charset="utf-8">
 $(function () {
   $(".js-next").on("click", function(e) {
-    e.preventDefault();
+   e.preventDefault();
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.getJSON("/posts/" + nextId + "/post_data", function(data) {
       $(".postTitle").text(data["title"]);
