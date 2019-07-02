@@ -300,16 +300,15 @@ Okay, now let's add the JavaScript to handle this.
 # ...
 <script type="text/javascript" charset="utf-8">
 $(function () {
-  $(".js-next").on("click", function() {
+  $(".js-next").on("click", function(e) {
+    e.preventDefault();
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.getJSON("/posts/" + nextId + "/post_data", function(data) {
-      $(".authorName").text(data["author"]["name"]);
       $(".postTitle").text(data["title"]);
       $(".postBody").text(data["description"]);
       // re-set the id to current on the link
       $(".js-next").attr("data-id", data["id"]);
     });
-    return false;
   });
 });
 </script>
