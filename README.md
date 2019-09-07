@@ -187,7 +187,7 @@ it:
 # ...
   def body
     post = Post.find(params[:id])
-    render plain: post.description
+    render json: PostSerializer.serialize(post)
   end
 ```
 
@@ -215,7 +215,7 @@ serialized `Post`, so let's change the route and action to `post_data`:
 # ...
   def post_data
     post = Post.find(params[:id])
-    render plain: post.description
+    render json: PostSerializer.serialize(post)
 ```
 
 #### Consuming JSON From The API
@@ -284,7 +284,6 @@ can use to identify the different elements, and add our `Next` link.
 
 ```erb
 # posts/show.html.erb
-<div class="authorName"><%= @post.author.name %></div>
 <a href="#" class="js-next" data-id="<%=@post.id%>">Next...</a>
 <h1 class="postTitle"><%= @post.title %></h1>
 <p class="postBody"><%= @post.description %></p>
