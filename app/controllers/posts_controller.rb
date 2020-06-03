@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
 
+
+
   def index
     @posts = Post.all
   end
@@ -25,13 +27,16 @@ class PostsController < ApplicationController
     @post.update(post_params)
     redirect_to post_path(@post)
   end
-
+  
+  
   def post_data
     post = Post.find(params[:id])
-    render plain: post.description
+    render json: PostSerializer.serialize(post)
   end
 
+
 private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
